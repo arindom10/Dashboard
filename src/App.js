@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Sidebar from "./Components/SideBar/Sidebar";
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
@@ -16,13 +17,14 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-white dark:bg-gray-900">
-      <button
+    <div className=" bg-white dark:bg-gray-900">
+      {/* <button
         onClick={toggleDarkMode}
         className="px-4 py-2 text-sm font-medium text-white bg-blue-500 rounded-lg hover:bg-blue-700 dark:bg-gray-800 dark:hover:bg-gray-600"
       >
         {darkMode ? "Light" : "Dark"} Mode
-      </button>
+      </button> */}
+      <Sidebar />
     </div>
   );
 }
