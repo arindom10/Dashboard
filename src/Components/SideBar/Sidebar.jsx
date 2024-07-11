@@ -1,5 +1,52 @@
 import React, { useEffect, useState } from "react";
 import { FaBell, FaEnvelope, FaUser, FaCog } from "react-icons/fa";
+import { Line, Bar } from "react-chartjs-2";
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend,
+} from "chart.js";
+
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend
+);
+
+const lineData = {
+  labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"],
+  datasets: [
+    {
+      label: "Sales",
+      data: [33, 53, 85, 41, 44, 65, 85],
+      fill: false,
+      backgroundColor: "rgba(75,192,192,0.6)",
+      borderColor: "rgba(75,192,192,1)",
+    },
+  ],
+};
+
+const barData = {
+  labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
+  datasets: [
+    {
+      label: "Traffic",
+      data: [65, 59, 80, 81, 56, 55],
+      backgroundColor: "rgba(75,192,192,0.6)",
+    },
+  ],
+};
 
 function Sidebar() {
   const [darkMode, setDarkMode] = useState(false);
@@ -102,11 +149,141 @@ function Sidebar() {
         </aside>
 
         {/* Main View */}
-        <main className="flex-1 p-4">
-          <h1 className="text-2xl font-semibold">
-            Welcome to the Admin Dashboard
-          </h1>
-          <p>Select a menu item from the sidebar to get started.</p>
+        <main className="flex-1 p-4 space-y-4">
+          {/* Overview of Latest Month */}
+          <div className="bg-white shadow rounded-lg p-6">
+            <h2 className="text-lg font-semibold mb-4">
+              Overview of Latest Month
+            </h2>
+            <div className="flex flex-wrap">
+              <div className="w-full md:w-1/2 lg:w-1/4 p-2">
+                <div className="bg-gray-50 p-4 rounded-lg shadow">
+                  <h3 className="text-sm font-medium text-gray-600">
+                    Current Month Earnings
+                  </h3>
+                  <p className="text-2xl font-semibold text-gray-800">
+                    $6468.96
+                  </p>
+                </div>
+              </div>
+              <div className="w-full md:w-1/2 lg:w-1/4 p-2">
+                <div className="bg-gray-50 p-4 rounded-lg shadow">
+                  <h3 className="text-sm font-medium text-gray-600">
+                    Wallet Balance
+                  </h3>
+                  <p className="text-2xl font-semibold text-gray-800">
+                    $3,567.80
+                  </p>
+                </div>
+              </div>
+              <div className="w-full md:w-1/2 lg:w-1/4 p-2">
+                <div className="bg-gray-50 p-4 rounded-lg shadow">
+                  <h3 className="text-sm font-medium text-gray-600">
+                    Referral Earning
+                  </h3>
+                  <p className="text-2xl font-semibold text-gray-800">
+                    $1589.53
+                  </p>
+                </div>
+              </div>
+              <div className="w-full md:w-1/2 lg:w-1/4 p-2">
+                <div className="bg-gray-50 p-4 rounded-lg shadow">
+                  <h3 className="text-sm font-medium text-gray-600">
+                    Estimate Sales
+                  </h3>
+                  <p className="text-2xl font-semibold text-gray-800">
+                    $2651.50
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Current Month Sales */}
+          <div className="bg-white shadow rounded-lg p-6">
+            <h2 className="text-lg font-semibold mb-4">Current Month Sales</h2>
+            <Line data={lineData} />
+          </div>
+
+          {/* Traffic */}
+          <div className="bg-white shadow rounded-lg p-6">
+            <h2 className="text-lg font-semibold mb-4">Traffic</h2>
+            <Bar data={barData} />
+          </div>
+
+          {/* Recent Activities */}
+          <div className="bg-white shadow rounded-lg p-6">
+            <h2 className="text-lg font-semibold mb-4">Recent Activities</h2>
+            <ul className="space-y-2">
+              <li className="flex items-center justify-between">
+                <div>
+                  <p className="text-sm font-medium">Nikolai Updated a Task</p>
+                  <p className="text-xs text-gray-500">40 Mins Ago</p>
+                </div>
+                <p className="text-sm font-medium text-gray-800">INVOICE</p>
+              </li>
+              <li className="flex items-center justify-between">
+                <div>
+                  <p className="text-sm font-medium">Panshi Updated a Task</p>
+                  <p className="text-xs text-gray-500">1 day ago</p>
+                </div>
+                <p className="text-sm font-medium text-gray-800">CUSTOMERS</p>
+              </li>
+              <li className="flex items-center justify-between">
+                <div>
+                  <p className="text-sm font-medium">Manshi Updated a Task</p>
+                  <p className="text-xs text-gray-500">1 day ago</p>
+                </div>
+                <p className="text-sm font-medium text-gray-800">PROCESS</p>
+              </li>
+              <li className="flex items-center justify-between">
+                <div>
+                  <p className="text-sm font-medium">Fanshi Added a Comment</p>
+                  <p className="text-xs text-gray-500">1 day ago</p>
+                </div>
+                <p className="text-sm font-medium text-gray-800">COMMENT</p>
+              </li>
+            </ul>
+          </div>
+
+          {/* Order Status */}
+          <div className="bg-white shadow rounded-lg p-6">
+            <h2 className="text-lg font-semibold mb-4">Order Status</h2>
+            <table className="w-full text-left">
+              <thead>
+                <tr>
+                  <th className="py-2 px-4 border-b">INVOICE</th>
+                  <th className="py-2 px-4 border-b">CUSTOMERS</th>
+                  <th className="py-2 px-4 border-b">FROM</th>
+                  <th className="py-2 px-4 border-b">PRICE</th>
+                  <th className="py-2 px-4 border-b">STATUS</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td className="py-2 px-4 border-b">12386</td>
+                  <td className="py-2 px-4 border-b">Charly dues</td>
+                  <td className="py-2 px-4 border-b">Russia</td>
+                  <td className="py-2 px-4 border-b">$2652</td>
+                  <td className="py-2 px-4 border-b">Process</td>
+                </tr>
+                <tr>
+                  <td className="py-2 px-4 border-b">12386</td>
+                  <td className="py-2 px-4 border-b">Charly dues</td>
+                  <td className="py-2 px-4 border-b">Russia</td>
+                  <td className="py-2 px-4 border-b">$2652</td>
+                  <td className="py-2 px-4 border-b">Open</td>
+                </tr>
+                <tr>
+                  <td className="py-2 px-4 border-b">12386</td>
+                  <td className="py-2 px-4 border-b">Charly dues</td>
+                  <td className="py-2 px-4 border-b">Russia</td>
+                  <td className="py-2 px-4 border-b">$2652</td>
+                  <td className="py-2 px-4 border-b">On Hold</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </main>
       </div>
     </div>
