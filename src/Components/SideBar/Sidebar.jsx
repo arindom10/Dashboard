@@ -15,6 +15,8 @@ import SplineChart from "../SplineChart";
 import SimpleDonut from "../SimpleDonut";
 import Dashboard from "../Dashboard";
 import Balance from "../Balance";
+import Revinue from "../Revinue";
+import RecentActivity from "../RecentActivity";
 
 ChartJS.register(
   CategoryScale,
@@ -233,6 +235,8 @@ function Sidebar() {
               <SimpleDonut />
             </div>
           </div>
+          <Revinue />
+          <RecentActivity />
         </main>
       </div>
     </div>

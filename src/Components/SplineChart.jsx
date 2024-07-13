@@ -46,7 +46,7 @@ const SplineChart = () => {
   return (
     <div id="chart">
       <ReactApexChart
-        // options={option}
+        options={option}
         series={option.series}
         type="area"
         height={350}

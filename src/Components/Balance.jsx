@@ -17,7 +17,7 @@ const StatCard = ({ icon, title, amount }) => (
 );
 
 const Balance = () => (
-  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-4">
+  <div className="grid grid-cols-1 sm:grid-cols-2 dark:text-black lg:grid-cols-2 xl:grid-cols-4 gap-4">
     <StatCard icon={<FaWallet />} title="Wallet Balance" amount="$3,567.80" />
     <StatCard
       icon={<FaUserFriends />}
