@@ -145,7 +145,7 @@ function Sidebar() {
             Icons
           </a>
           <a
-            href="#"
+            href="/"
             className="flex items-center py-2 px-4 rounded hover:bg-gray-200"
           >
             <i className="fas fa-map-marker-alt mr-2"></i>
