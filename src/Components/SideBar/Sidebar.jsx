@@ -156,7 +156,7 @@ function Sidebar() {
             className="flex items-center py-2 px-4 rounded hover:bg-gray-200"
           >
             <i className="fas fa-user mr-2"></i>
-            User Pages
+            User Page
           </a>
           <a
             href="#"
